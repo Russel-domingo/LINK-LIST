@@ -144,6 +144,40 @@ function LinkedList() {
 
             result += `null`;
             return result;
+        },
+
+        insertAt(index, ...values) {
+
+            if (index < 0) {
+                return
+            }
+
+            for (let i = 0; i < values.length; i++) {
+                const value = values[i];
+                const newNode = Node(value);
+
+                if (index === 0) {
+                    newNode = this.head;
+                    this.head = newNode;
+                    index++;
+                    continue;
+                }
+
+                let current = this.head;
+                let previous = null;
+                let count = 0; 
+
+                while (current !== null && count < index) {
+                    previous = current;
+                    current = current.nextNode;
+                    count++;
+                }
+
+                newNode.nextNode = current;
+                previous.nextNode = newNode;
+
+            }
+            
         }
         //
     }
@@ -170,4 +204,7 @@ console.log(list.getHead());
 console.log(list.tail());
 console.log(list.at(0)); // 30
 console.log(list.contains(20)); // true
+console.log(list.toString())
+
+list.insertAt(1,10,11);
 console.log(list.toString());
