@@ -24,6 +24,25 @@ function LinkedList() {
             newNode.nextNode = this.head;
             this.head = newNode;
         },
+
+        size() {
+            let size = 0
+            let current = this.head;
+
+            while (current != null) {
+                size++;
+                current = current.nextNode;
+            }
+            return size;
+        }
+        //head()
+        //tail()
+        //at()
+        //pop()
+        //contains
+        //findIndex
+        //toString
+        //
     }
 
 }
@@ -35,3 +54,10 @@ function Node(value = null, nextNode = null) {
     }
 
 }
+
+const list = LinkedList();
+list.append(30);
+list.append(20);
+list.append(30);
+
+console.log(list.size());
