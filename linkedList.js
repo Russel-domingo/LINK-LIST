@@ -178,8 +178,33 @@ function LinkedList() {
 
             }
             
+        },
+
+        removeAt(index) {
+
+            if (index < 0 || index >= this.size()) {
+                throw new RangeError("index out of bound");
+            }
+
+            if (index === 0) {
+                const removed = this.head;
+                this.head = this.head.nextNode;
+                return removed;
+            }
+
+            let current = this.head;
+            let previous = null;
+            let count = 0;
+
+            while (count < index) {
+                previous = current;
+                current = current.nextNode;
+                count++;
+            }
+
+            previous.nextNode = current.nextNode;
+            return current;
         }
-        //
     }
 
 }
@@ -193,18 +218,4 @@ function Node(value = null, nextNode = null) {
 
 }
 
-const list = LinkedList();
-list.append(9);
-list.append(20);
-list.append(30);
-list.append(100);
-
-console.log(list.size());
-console.log(list.getHead());
-console.log(list.tail());
-console.log(list.at(0)); // 30
-console.log(list.contains(20)); // true
-console.log(list.toString())
-
-list.insertAt(1,10,11);
-console.log(list.toString());
+module.export = {LinkedList, Node};
