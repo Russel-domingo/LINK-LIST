@@ -115,9 +115,36 @@ function LinkedList() {
         },
     
         findIndex(value) {
-            
+            if (this.head === null) {
+                return -1;
+            }
+
+            let current = this.head;
+
+            let index = 0;
+            while (current !== null) {
+                if (current.value === value) {
+                    return index;    
+                }
+
+                current = current.nextNode;
+                index++
+            }
+            return - 1;
+        },
+
+        toString() {
+            let current = this.head;
+            let result = "";
+
+            while(current !== null) {
+                result += `(${current.value}) -> `;
+                current = current.nextNode;
+            }
+
+            result += `null`;
+            return result;
         }
-        //toString
         //
     }
 
@@ -136,10 +163,11 @@ const list = LinkedList();
 list.append(9);
 list.append(20);
 list.append(30);
+list.append(100);
 
 console.log(list.size());
 console.log(list.getHead());
 console.log(list.tail());
 console.log(list.at(0)); // 30
-console.log(list.pop());
 console.log(list.contains(20)); // true
+console.log(list.toString());
