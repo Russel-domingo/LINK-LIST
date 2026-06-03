@@ -34,9 +34,26 @@ function LinkedList() {
                 current = current.nextNode;
             }
             return size;
+        },
+
+        getHead() {
+            
+            return this.head;
+        },
+
+        tail() {
+            if (this.head == null) {
+                return null;
+            }
+
+            let current = this.head;
+            while (current.nextNode != null) {
+                current = current.nextNode;
+            }
+
+            return current;
         }
-        //head()
-        //tail()
+        
         //at()
         //pop()
         //contains
@@ -51,6 +68,7 @@ function Node(value = null, nextNode = null) {
     return {
         value,
         nextNode
+        
     }
 
 }
@@ -61,3 +79,5 @@ list.append(20);
 list.append(30);
 
 console.log(list.size());
+console.log(list.getHead());
+console.log(list.tail());
