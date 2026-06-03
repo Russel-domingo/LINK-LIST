@@ -218,4 +218,4 @@ function Node(value = null, nextNode = null) {
 
 }
 
-module.export = {LinkedList, Node};
+module.exports = {LinkedList, Node};
